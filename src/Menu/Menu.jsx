@@ -1,7 +1,8 @@
 const Menu = (props) => {
     return (
-        <div>
-            menu
+        <div className='menu'>
+            <div className='score-menu'>{'Your score: ' + (props.snakeDots.length - 2)}</div>
+            <button className='restart' onClick={props.onRestart}>Restart</button>
         </div>
     )
 }

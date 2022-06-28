@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Snake from "./Snake/Snake";
 import Food from "./Food/Food";
+import Menu from "./Menu/Menu";
 
 let getRandomCoordinates = () => {
     let [min, max] = [1, 98];
@@ -109,7 +110,6 @@ function App() {
     }
 
     let onGameOver = () => {
-        // alert('GAME OVER\nSnake: ' + snakeDots.length);
         setMenu(true)
     }
 
@@ -123,13 +123,11 @@ function App() {
 
     return (
         <div>
-            {menu ? <div style={{marginTop: '53.5px'}}></div> : <div className='score'>Score: {snakeDots.length - 2}</div>}
+            {menu ? <div style={{marginTop: '53.5px'}}></div> :
+                <div className='score'>Score: {snakeDots.length - 2}</div>}
             <div className='game-area'>
                 {menu ?
-                    <div className='menu'>
-                        <div className='score-menu'>{'Your score: ' + (snakeDots.length - 2)}</div>
-                        <button className='restart' onClick={onRestart}>Restart</button>
-                    </div>
+                    <Menu snakeDots={snakeDots} onRestart={onRestart}/>
                     :
                     <>
                         <Snake snakeDots={snakeDots}/>
